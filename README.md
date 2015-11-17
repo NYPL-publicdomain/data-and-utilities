@@ -1,10 +1,10 @@
 # Digital Collections PD Item Data
 Snapshot of Item and Collection data for public domain materials in NYPL Digital Collections as of Thursday November 19, 2015
 
-Introductory paragraph to the dataset here. eg. This dataset is organized by [Collections]() and [Items]().
+Introductory paragraph to the dataset here. eg. This dataset is organized by [Collections](#collections) and [Items](#items).
 
-[Collections]()
-[Items]()
+- [Collections](#collections)
+- [Items](#items)
 
 ## Collections
 
