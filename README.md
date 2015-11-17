@@ -12,7 +12,7 @@ A Collection is xxxx. A listing of the attributes?
 
 Look like this (JSON version):
 
-```
+```json
 {
   "UUID": "954eecd0-c5bf-012f-9413-58d385a7bc34",
   "databaseID": 25812,
@@ -114,7 +114,7 @@ An Item is xxxx. A listing of the attributes?
 
 Look like this (JSON version):
 
-```
+```json
 {
   "UUID": "17159270-c556-012f-af61-58d385a7bc34",
   "databaseID": 3384249,
