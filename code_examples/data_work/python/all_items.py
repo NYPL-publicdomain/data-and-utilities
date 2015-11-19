@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import json
 
 item_files = ['pd_items_1.json','pd_items_2.json','pd_items_3.json']
@@ -29,7 +31,7 @@ for item in all_items:
 	#the title of the item, there can only be one title
 	print(item['title'])
 
-	#there can be multiple 0 ore more alternative titles
+	#there can be multiple 0 or more alternative titles
 	for alt_title in item['alternativeTitle']:
 
 		print(alt_title)
@@ -111,7 +113,8 @@ for item in all_items:
 
 	#the genres for the item
 	for genre in item['genre']:
-		print (genre)
+		print(genre['text'])
+		print(genre['URI'])
 
 
 	#bNumber, our catalog number (catalog.nypl.org/record=b########)
