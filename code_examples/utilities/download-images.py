@@ -33,7 +33,7 @@ deriv_type = "q".lower()
 
 ######
 
-# Setting up some baselines here
+#Setting up some baselines here
 api_base = 'http://api.repo.nypl.org/api/v1/'
 img_url_base = "http://images.nypl.org/index.php?id="
 captures = []
@@ -83,10 +83,10 @@ else:
 	else:
 		print "No captures in the API response! Trying to see if this is a capture UUID, not an item UUID..."
 		uuid = getItem(uuid)['nyplAPI']['response']['mods']['identifier'][-1]['$']
-		captureBase = api_base + 'items/' + uuid + '?withTitles=yes&per_page=200'
+		captureBase = api_base + 'items/' + uuid + '?withTitles=yes&per_page=100'
 		itemResponse = getCaptures(uuid)
 		number_of_captures = int(itemResponse['nyplAPI']['response']['numResults'])
-		print "Correct item UUID is "+uuid
+		print "Correct item UUID is " + uuid
 		print "Item UUID has %s capture(s) total" % (number_of_captures)
 
 #Check to see if the requested derivs exist for that item ID (applies mostly to conditional derivs q,v, and g which only exist for public domain items)
