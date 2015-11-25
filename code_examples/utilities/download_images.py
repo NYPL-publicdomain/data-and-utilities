@@ -54,12 +54,12 @@ def getContainer(uuid):
 	call = requests.get(url, headers={'Authorization':'Token token=' + token}) 
 	return call.json()
 
-captureResponse = getCaptures(uuid)
-itemResponse = getItem(uuid)
-containerResponse = getContainer(uuid)
+capture_response = getCaptures(uuid)
+item_response = getItem(uuid)
+container_response = getContainer(uuid)
 
-isContainer = int(containerResponse['nyplAPI']['response']['numItems'])
-number_of_captures = int(captureResponse['nyplAPI']['response']['numResults'])
+is_container = int(container_response['nyplAPI']['response']['numItems'])
+number_of_captures = int(capture_response['nyplAPI']['response']['numResults'])
 
 #######
 
@@ -72,7 +72,7 @@ else:
 	print "OK, that ID is well formed, looking it up now..."
 
 #Check to make sure we don't accidentally have a container or a collection UUID here
-if isContainer > 0 and number_of_captures > 0:
+if is_container > 0 and number_of_captures > 0:
 	sys.exit("This is a container, this script is meant to pull images from single items only.")
 #If we're good to go, either get the number of capture IDs, or go to the item UUID and get the # of captures there
 else:
@@ -81,16 +81,16 @@ else:
 		print "%s captures total" % (number_of_captures)
 		print uuid
 	else:
-		print "No captures in the API response! Trying to see if this is a capture UUID, not an item UUID..."
+		print "No captures in the API response! Trying to see if this is a capture UUID instead of an item UUID..."
 		uuid = getItem(uuid)['nyplAPI']['response']['mods']['identifier'][-1]['$']
-		captureBase = api_base + 'items/' + uuid + '?withTitles=yes&per_page=100'
-		itemResponse = getCaptures(uuid)
-		number_of_captures = int(itemResponse['nyplAPI']['response']['numResults'])
-		print "Correct item UUID is " + uuid
+		item_response = getCaptures(uuid)
+		capture_response = getCaptures(uuid)
+		number_of_captures = int(item_response['nyplAPI']['response']['numResults'])
+		print "Ah yes -- correct item UUID is " + uuid
 		print "Item UUID has %s capture(s) total" % (number_of_captures)
 
 #Check to see if the requested derivs exist for that item ID (applies mostly to conditional derivs q,v, and g which only exist for public domain items)
-high_res_captures = getCaptures(uuid)['nyplAPI']['response']['capture'][0]['imageLinks']['imageLink']
+high_res_captures = capture_response['nyplAPI']['response']['capture'][0]['imageLinks']['imageLink']
 
 if ('t=' + deriv_type) in str(high_res_captures):
 	print "Good news! This item has the type of captures you've requested..."
@@ -99,12 +99,12 @@ else:
 
 #OK, enough checking, let's get the actual captures!
 for i in range(number_of_captures):
-	captureID = itemResponse['nyplAPI']['response']['capture'][i]['imageID']
-	captures.append(captureID)
+	capture_id = capture_response['nyplAPI']['response']['capture'][i]['imageID']
+	captures.append(capture_id)
 
 #Grab the item title, and do some cleanup to make it usable as a folder name
 table = string.maketrans("","")
-title = str(itemResponse['nyplAPI']['response']['capture'][0]['title']).translate(table, string.punctuation).replace("  "," ").replace(" ","_")
+title = str(capture_response['nyplAPI']['response']['capture'][0]['title']).translate(table, string.punctuation).replace("  "," ").replace(" ","_")
 title = title[:65].rpartition('_')[0]
 print "folder title will be '"+title+"'"
 
