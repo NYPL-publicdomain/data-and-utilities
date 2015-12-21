@@ -11,7 +11,7 @@ Introductory paragraph to the dataset here. eg. This dataset is organized by [It
 
 Items are distinct intellectual or bibliographic entities in Digital Collections. They can be photographs, full books or illustrations from books, journals, letters, pamphlets, [skull fragments](http://digitalcollections.nypl.org/items/579bab40-98c5-0131-01ad-58d385a7bbd0), [cuneiform tablets](http://digitalcollections.nypl.org/search/index?utf8=%E2%9C%93&keywords=cuneiform), and much more. Most items belong to collections, but there are some (usually books) that stand alone. Items are made up of one or more images (or "captures").  
 
-Below are the metadata fields you'll find in the CSV and JSON files that describe our public domain items.  
+Below are the metadata fields you'll find in the CSV and JSON files that describe our public domain items. In the CSV file, arrays of strings are represented as a single pipe-delimited string, like "Wollrabe, Amalie | Helmerding, Carl, 1822-1899". 
 
 | Field | Description | CSV | JSON | Value |
 | ----- | ----------- | --- | ---- | ----- |
@@ -30,7 +30,7 @@ Below are the metadata fields you'll find in the CSV and JSON files that describ
 | Language | The language of the item. An item may have zero or more languages. | Language | language | array of strings |
 | Description | A summary or description of the contents of the item, if available. | Description | description | string |
 | Note | A list of notes associated with the item. Each note in the list is prefaced by a label denoting the note type, like "General Note: ". | Note | note | array of strings |
-| Topical subject | A list of topical subjects. Most terms are taken from [LCSH](http://id.loc.gov/authorities/subjects.html) or [LCTGM](http://id.loc.gov/vocabulary/graphicMaterials.html). Complex subject headings are broken down into individual subjects. | Subject Topical | subjectTopical | array of strings (CSV) / array of objects (JSON) |
+| Topical subject | A list of topical subjects. Most terms are taken from [LCSH](http://id.loc.gov/authorities/subjects.html) or [LCTGM](http://id.loc.gov/vocabulary/graphicMaterials.html). Complex subject headings are usually broken down into individual subjects. | Subject Topical | subjectTopical | array of strings (CSV) / array of objects (JSON) |
 | Topical subject text | (JSON) The text of the topical subject. | - | subjectTopical.text | string |
 | Topical subject URI | (JSON) A URI for the topical subject, if available. | - | subjectTopical.URI | string |
 | Name subject | A list of people or organizations described or depicted in the contents of the item. Most terms come from the [LC Name Authority File](http://id.loc.gov/authorities/names.html). | Subject Name | subjectName | array of strings (CSV) / array of objects (JSON) |
@@ -55,7 +55,7 @@ Below are the metadata fields you'll find in the CSV and JSON files that describ
 | Identifier - ISBN | The ISBN of the item, if available. | Identifier ISBN | identifierISBN | string |
 | Identifier - ISSN | The ISSN of the item, if available. | Identifier ISSN | identifierISSN | string |
 | Identifier - Interview ID | The interview id of interview items, if available. | Identifier Interview ID | identifierInterviewID | string |
-| Identifier - Postcard ID | The publisher series number of the postcard item, if available. | IdentifierPostcardID | identifierPostcardID | string |
+| Identifier - Postcard ID | The publisher series number of the postcard item, if available. | Identifier Postcard ID | identifierPostcardID | string |
 | Identifier - LCCN | The LCCN of the item, if available. | Identifier LCCN | identifierLCCN | string |
 | Identifier - OCLC/RLIN | The OCLC or RLIN number of the item, if available. | Identifier OCLC/RLIN | identifierOCLCRLIN | string |
 | Physical description - Extent | The number and dimensions of the physical item, if available. | Physical Description Extent | physicalDescriptionExtent | array of strings | 
@@ -70,7 +70,7 @@ Below are the metadata fields you'll find in the CSV and JSON files that describ
 | Number of captures | The number of images comprising the item. | Number of Captures | numberOfCaptures | integer |
 | First image | (CSV) A link to the full-size image of the item's first capture. | First Image | - | string |
 | Captures | (JSON) A list of links to the full-size jpgs for an item's captures. | - | captures | array of strings |
-| Digital Collections URL | A link to the item in [Digital Collections](http://digitalcollection.nypl.org). | Digital Collections URL | digtalCollectionsURL | string |
+| Digital Collections URL | A link to the item in [Digital Collections](http://digitalcollections.nypl.org). | Digital Collections URL | digtalCollectionsURL | string |
 
 Example item (JSON version):
 
