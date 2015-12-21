@@ -29,7 +29,7 @@ uuid = 'INSERT_UUID'
     # v - Cropped .jpeg (2560 pixels on the long side) N.B. Exists only for public domain assets
     # g - a "full-size" .jpeg derivative N.B. Exists only for public domain assets
 #Set the deriv type that you want to pull here
-deriv_type = "q".lower()
+deriv_type = 'INSERT_DERIV_TYPE'.lower()
 
 ######
 
