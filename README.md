@@ -74,7 +74,7 @@ Below are the metadata fields you'll find in the CSV and JSON files that describ
 
 Example item (JSON version):
 
-```json
+```JSON
 {
   "UUID": "17159270-c556-012f-af61-58d385a7bc34",
   "databaseID": 3384249,
@@ -145,11 +145,21 @@ Example item (JSON version):
 
 ## Collections
 
-A Collection is xxxx. A listing of the attributes?
+Collections in Digital Collections usually represent physical collections at NYPL. These can be the personal papers of an individual or organization, like the [United States Sanitary Commission Records](http://digitalcollections.nypl.org/collections/united-states-sanitary-commission-records#/?tab=about), artifacts belonging to a prolific collector, like the [Thomas Addis Emmet Collection](http://digitalcollections.nypl.org/collections/thomas-addis-emmet-collection-1483-1876-bulk-1700-1800#/?tab=about), items collected around a certain subject or genre, like [Prints Depicting Dance](Prints depicting dance
+) or [Maps of North America](http://digitalcollections.nypl.org/collections/maps-of-north-america#/?tab=about), or works of art the library holds of a particular artist, like Berenice Abbott's [Changing New York](http://digitalcollections.nypl.org/collections/changing-new-york#/?tab=about). Sometimes a "collection" can be a book or or object that has its own distinct intellectual items described further within, like [Apartment Houses of the Metropolis](http://digitalcollections.nypl.org/collections/apartment-houses-of-the-metropolis#/?tab=about).   
 
-Look like this (JSON version):
+Metadata included in the collections files follows the same format as for items, with a few exceptions. Instead of 'Number of captures', 'First image', and 'Captures', the collections data includes the following field:
 
-```json
+| Field | Description | CSV | JSON | Value |
+| ----- | ----------- | --- | ---- | ----- |
+| Number of Items | The number of public domain items contained in the collection. | Number of Items | numberOfItems | integer |
+
+The collections data also does not include 'Collection UUID', 'Container UUID', 'Collection Title', and 'Container Title'. Each collection's own UUID and title are represented in 'UUID', and 'Title'. 
+
+
+Example collection (JSON version):
+
+```JSON
 {
   "UUID": "954eecd0-c5bf-012f-9413-58d385a7bc34",
   "databaseID": 25812,
