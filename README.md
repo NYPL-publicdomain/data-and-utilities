@@ -1,13 +1,19 @@
 # Digital Collections PD Item Data and Tools
-Snapshot of Item and Collection data for public domain materials in NYPL Digital Collections as of Thursday November 19, 2015
 
-Introductory paragraph to the dataset here. eg. This dataset is organized by [Items](#items) and [Collections](#collections).
+Did you know that nearly one-third of the items in our Digital Collections are in the public domain -- that is, they have been designated as having no known U.S. copyright restrictions? This means that everyone has the freedom to enjoy and reuse these materials in almost limitless ways. To help you explore, visualize, and repurpose these items, we've gathered all of their metadata into a single data release. 
+
+This dataset is organized by [Items](#items) and [Collections](#collections) in both CSV and JSON formats. Our descriptive metadata is normally stored in the MODS schema (which is what you'll find in our Digital Collections API), but for this release we've simplified and flattened the metadata structure for CSV to make it easier to navigate with spreadsheet tools. The JSON versions include a bit more metadata, including URIs for many names and subjects and links to the full-size images comprising each item. 
+
+NYPL has been digitizing collections for over fifteen years, so our metadata reflects an evolution of standards, practices, and workflows. We are actively refining our metadata creation and quality control processes and exploring ways to improve the consistency and accuracy of our legacy metadata, but in the meantime, you may find some idiosyncracies and curiosities in our data. If you'd like to bring certain issues to our attention, we welcome your feedback through our [Digital Collections](http://digitalcollections.nypl.org) feedback form.
+
+(Say something here about license (or absence of license) on data? Something about attribution (i.e. you don't need to attribute)?)  
 
 - [Items](#items)
 - [Collections](#collections)
+- [Code Examples](#code-examples)
 
 
-##Items
+## Items
 
 Items are distinct intellectual or bibliographic entities in Digital Collections. They can be photographs, full books or illustrations from books, journals, letters, pamphlets, [skull fragments](http://digitalcollections.nypl.org/items/579bab40-98c5-0131-01ad-58d385a7bbd0), [cuneiform tablets](http://digitalcollections.nypl.org/search/index?utf8=%E2%9C%93&keywords=cuneiform), and much more. Most items belong to collections, but there are some (usually books) that stand alone. Items are made up of one or more images (or "captures").  
 
@@ -254,3 +260,6 @@ Example collection (JSON version):
   "digitalCollectionsURL": "http://digitalcollections.nypl.org/collections/954eecd0-c5bf-012f-9413-58d385a7bc34"
 }
 ```
+
+## Code Examples
+Something about code examples here?  
