@@ -1,4 +1,4 @@
-# Digital Collections PD Item Data and Tools
+# Digital Collections Public Domain Item Data and Tools
 
 Did you know that nearly one-third of the items in our Digital Collections are in the public domain -- that is, they have been designated as having no known U.S. copyright restrictions? This means that everyone has the freedom to enjoy and reuse these materials in almost limitless ways. To help you explore, visualize, and repurpose these items, we've gathered all of their metadata into a single data release. 
 
