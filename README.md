@@ -6,7 +6,7 @@ This dataset is organized by [Items](#items) and [Collections](#collections) in 
 
 NYPL has been digitizing collections for over fifteen years, so our metadata reflects an evolution of standards, practices, and workflows. We are actively refining our metadata creation and quality control processes and exploring ways to improve the consistency and accuracy of our legacy metadata, but in the meantime, you may find some idiosyncracies and curiosities in our data. If you'd like to bring certain issues to our attention, we welcome your feedback through our [Digital Collections](http://digitalcollections.nypl.org) feedback form.
 
-NYPL's bibliographic metadata records provided via the repository are distributed under a [Creative Commons CC0 1.0 Universal Public Domain Dedication ("CCO 1.0 Dedication")](#http://creativecommons.org/publicdomain/zero/1.0/). 
+NYPL's bibliographic metadata records provided via this repository are distributed under a [Creative Commons CC0 1.0 Universal Public Domain Dedication ("CCO 1.0 Dedication")](#http://creativecommons.org/publicdomain/zero/1.0/). 
 
 - [Items](#items)
 - [Collections](#collections)
