@@ -35,26 +35,26 @@ Below are the metadata fields you'll find in the CSV and JSON files that describ
 | Date end | The latest date recorded for the item. This could be the latest of multiple single dates or the end date of a date range. | Date End | dateEnd | string |
 | Language | The language of the item. An item may have zero or more languages. | Language | language | array of strings |
 | Description | A summary or description of the contents of the item, if available. | Description | description | string |
-| Note | A list of notes associated with the item. Each note in the list is prefaced by a label denoting the note type, like "General Note: ". | Note | note | array of strings |
+| Note | A list of notes associated with the item. Each note in the list is prefaced by a label denoting the note type, like "General Note: " | Note | note | array of strings |
 | Topical subject | A list of topical subjects. Most terms are taken from [LCSH](http://id.loc.gov/authorities/subjects.html) or [LCTGM](http://id.loc.gov/vocabulary/graphicMaterials.html). Complex subject headings are usually broken down into individual subjects. | Subject Topical | subjectTopical | array of strings (CSV) / array of objects (JSON) |
 | Topical subject text | (JSON) The text of the topical subject. | - | subjectTopical.text | string |
 | Topical subject URI | (JSON) A URI for the topical subject, if available. | - | subjectTopical.URI | string |
 | Name subject | A list of people or organizations described or depicted in the contents of the item. Most terms come from the [LC Name Authority File](http://id.loc.gov/authorities/names.html). | Subject Name | subjectName | array of strings (CSV) / array of objects (JSON) |
 | Name subject text | (JSON) The name of the subject. | - | subjectName.text | string |
 | Name subject URI | (JSON) A URI for the name subject, if available. | - | subjectName.URI | string |
-| Geographic subject | A list of places described or depicted in the contents of the item. Most terms come from LCNAF and [LCSH](http://id.loc.gov/search/?q=memberOf:http://id.loc.gov/authorities/subjects/collection_GeographicSubdivisions). | Subject Geographic | subjectGeographic | array of strings (CSV) / array of objects (JSON) |
+| Geographic subject | A list of places described or depicted in the contents of the item. Most terms come from [LCNAF](http://id.loc.gov/authorities/names.html) and [LCSH](http://id.loc.gov/search/?q=memberOf:http://id.loc.gov/authorities/subjects/collection_GeographicSubdivisions). | Subject Geographic | subjectGeographic | array of strings (CSV) / array of objects (JSON) |
 | Geographic subject text | (JSON) The name of the place. | - | subjectGeographic.text | string |
 | Geographic subject URI | (JSON) A URI for the geographic subject, if available. | - | subjectGeographic.URI | string |
 | Temporal subject | A list of time periods related to the contents of the item. Many terms come from [LCSH](http://id.loc.gov/search/?q=memberOf:http://id.loc.gov/authorities/subjects/collection_TemporalSubdivisions). | Subject Temporal | subjectTemporal | array of strings (CSV) / array of objects (JSON) |
 | Temporal subject text | (JSON) The text of the time period. | - | subjectTemporal.text | string |
 | Temporal subject URI | (JSON) A URI for the temporal subject, if available. | - | subjectTemporal.URI | string |
-| Title subject | A list of titles described or depicted in the contents of the item. Most terms come from LCNAF. | Subject Title | subjectTitle | array of strings (CSV) / array of objects (JSON) |
+| Title subject | A list of titles described or depicted in the contents of the item. Most terms come from [LCNAF](http://id.loc.gov/authorities/names.html). | Subject Title | subjectTitle | array of strings (CSV) / array of objects (JSON) |
 | Title subject text | (JSON) The text of the title. | - | subjectTitle.text | string |
 | Title subject URI | (JSON) A URI for the title subject, if available. | - | subjectTitle.URI | string |
 | Type of resource | A list of broad resource types categorizing the content of the resource. Terms are drawn from the following [list](https://www.loc.gov/standards/mods/userguide/typeofresource.html): (text , still image, moving image, cartographic, notated music, sound recording, three dimensional object, mixed material). | Resource Type | resourceType | array of strings |
-| Genre | A list of terms that describe the nature of the content or function of the resource at a greater level of specificity than Type of Resource. This field is currently very uncontrolled, with some terms representing physical form and many items without genre terms at all. | Genre | genre | array of strings (CSV) / array of objects (JSON) |
+| Genre | A list of terms that describe the nature of the content or function of the resource at a greater level of specificity than Type of Resource. This field is currently very uncontrolled, with some terms representing physical form and many items without genre terms at all. Most terms are taken from [LCTGM](http://id.loc.gov/vocabulary/graphicMaterials.html), with some coming from [AAT](http://www.getty.edu/research/tools/vocabularies/aat/), [LCSH](http://id.loc.gov/authorities/subjects.html), and [LCGFT](http://id.loc.gov/authorities/genreForms.html). | Genre | genre | array of strings (CSV) / array of objects (JSON) |
 | Genre text | (JSON) The text of the genre. | - | genre.text | string |
-| Genre URI | (JSON) The URI of the genre, if available. Most terms are taken from LCTGM, with some coming from [AAT](http://www.getty.edu/research/tools/vocabularies/aat/), [LCSH](http://id.loc.gov/authorities/subjects.html), and [LCGFT](http://id.loc.gov/authorities/genreForms.html). | - | genre.URI | string |
+| Genre URI | (JSON) The URI of the genre, if available. | - | genre.URI | string |
 | Identifier - Bnumber | The catalog identifier, if the item is represented in the NYPL catalog. | Identifier BNumber | identifierBNumber | string |
 | Identifier - Accession number | The accession number of the item, if available. | Identifier Accession Number | identifierAccessionNumber | string |
 | Identifier - Call number | The call number of the physical item, if available. | Identifier Call Number | identifierCallNumber | string |
@@ -160,7 +160,7 @@ Metadata included in the collections files follows the same format as for items,
 | ----- | ----------- | --- | ---- | ----- |
 | Number of Items | The number of public domain items contained in the collection. | Number of Items | numberOfItems | integer |
 
-The collections data also does not include 'Collection UUID', 'Container UUID', 'Collection Title', and 'Container Title'. Each collection's own UUID and title are represented in 'UUID', and 'Title'. 
+The collections data also does not include 'Parent hierarchy', 'Collection UUID', 'Container UUID', 'Collection title', and 'Container title'. Each collection's own UUID and title are represented in 'UUID', and 'Title'. 
 
 
 Example collection (JSON version):
