@@ -262,7 +262,7 @@ Example collection (JSON version):
 ```
 
 ## Code Examples
-We've included a few example scripts and utilities to potentially help you get started digging into the data made available in this repository.
+We've included a few example scripts and utilities to help you get started digging into the data made available in this repository.
 
 - [all_items.js](https://github.com/NYPL-publicdomain/data-and-utilities/blob/master/code_examples/data_work/node/all_items.js) -- A Node.js script that outputs all the possible data elements for the items included in the `json` streams in this repository, to give you an idea of what the [various elements described above](#items) might contain.
 
