@@ -271,3 +271,18 @@ We've included a few example scripts and utilities to help you get started diggi
 - [download_images.py](https://github.com/NYPL-publicdomain/data-and-utilities/blob/master/code_examples/utilities/download_images.py) -- A(n ugly) python script that could be used to download images of a [Digital Collections](http://digitalcollections.nypl.org) item given the UUID of any multi-capture item. Requires an [NYPL Digital Collections Metadata API](http://api.repo.nypl.org/) token. 
 
 - [API Client](https://github.com/NYPL-publicdomain/api-client) -- A Node.js module to access the [NYPL Digital Collections Metadata API](http://api.repo.nypl.org/) and return all captures for any given item, container, or collection UUID. Requires an API token.
+
+--- 
+
+### About the NYPL Public Domain Release
+
+On January 6, 2016, The New York Public Library enhanced access to public domain items in Digital Collections so that everyone has the freedom to enjoy and reuse these materials in almost limitless ways. For all such items the Library now makes it possible to download the highest resolution images available directly from the [Digital Collections](http://digitalcollections.nypl.org) website. 
+
+That means more than 187,000 items free to use without restriction! But we know that 180K of anything is a lot to get your head around — so as a way to introduce you to these collections and inspire new works, NYPL Labs developed a suite of [projects and tools](http://nypl.org/publicdomain) to help you explore the vast collections and dive deep into specific ones. 
+
+Go forth, reuse, and let us know what you made with the #nyplremix hashtag! For more information:
+
+- [NYPL Labs Remix Residency](http://www.nypl.org/help/about-nypl/fellowships-institutes/remix)
+- [Data & Tools](https://github.com/NYPL-publicdomain/data-and-utilities)
+- [Public Domain Collections](http://publicdomain.nypl.org)
+- [Project Credits](https://github.com/NYPL-publicdomain/nypl-publicdomain.github.io#credits-for-the-january-2016-nypl-public-domain-release)
