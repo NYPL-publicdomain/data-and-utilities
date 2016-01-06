@@ -2,14 +2,14 @@
 
 import json
 
-item_files = ['pd_items_1.json','pd_items_2.json','pd_items_3.json']
+item_files = ['pd_items_1.ndjson','pd_items_2.ndjson','pd_items_3.ndjson','pd_items_4.ndjson']
 all_items = []
 
 
 #load each file into one big list
 for item_file in item_files:
 	print("Loading",item_file)
-	with open("../../items/" + item_file) as open_file:
+	with open("../../../items/" + item_file) as open_file:
 
 		for line in open_file:
 
@@ -40,7 +40,7 @@ for item in all_items:
 	for contributor in item['contributor']:
 
 		#the name
-		print(contributor['contributor'])
+		print(contributor['contributorName'])
 
 		#the type, person, corporation, etc
 		print(contributor['contributorType'])
