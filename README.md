@@ -1,17 +1,16 @@
 # Digital Collections Public Domain Item Data and Tools
 
-Did you know that nearly one-third of the items in our Digital Collections are in the public domain -- that is, they have been designated as having no known U.S. copyright restrictions? This means that everyone has the freedom to enjoy and reuse these materials in almost limitless ways. To help you explore, visualize, and repurpose these items, we've gathered all of their metadata into a single data release. (This data is a snapshot as of 12/30/15; see the [NYPL Digital Collections Metadata API](http://api.repo.nypl.org/) for updated information and for data about the non-public domain portions of our Digital Collections.)
+Did you know that nearly one-third of the items in our Digital Collections are in the public domain -- that is, they have been designated as having no known U.S. copyright restrictions? This means that everyone has the freedom to enjoy and reuse these materials in almost limitless ways. To help you explore, visualize, and repurpose these items, we've gathered all of their metadata into a single data release. (Based on feedback from this release, we'll be considering regular update possibilities, but at this time the data is a snapshot of our data from 12/30/15. See the [NYPL Digital Collections Metadata API](http://api.repo.nypl.org/) for updated information and for data about the non-public domain portions of our Digital Collections.)
 
 This dataset is organized by [Items](#items) and [Collections](#collections) in both CSV and JSON formats. Our descriptive metadata is normally stored in the MODS schema (which is what you'll find in our Digital Collections API), but for this release we've simplified and flattened the metadata structure for CSV to make it easier to navigate with spreadsheet tools. The JSON versions include a bit more metadata, including URIs for many names and subjects and links to the full-size images comprising each item. 
 
 NYPL has been digitizing collections since 1999, so our metadata reflects an evolution of standards, practices, and workflows. We are actively refining our metadata creation and quality control processes and exploring ways to improve the consistency and accuracy of our legacy metadata, but in the meantime, you may find some idiosyncracies and curiosities in our data. If you'd like to bring certain issues to our attention, we welcome your feedback through our [Digital Collections](http://digitalcollections.nypl.org) feedback form.
 
-NYPL's bibliographic metadata records provided via this repository are distributed under a [Creative Commons CC0 1.0 Universal Public Domain Dedication ("CCO 1.0 Dedication")](http://creativecommons.org/publicdomain/zero/1.0/). 
-
 - [Items](#items)
 - [Collections](#collections)
+- [Attribution](#attribution)
 - [Code Examples](#code-examples)
-
+- [Pull Requests and Issues](#pull-requests-and-issues)
 
 ## Items
 
@@ -260,6 +259,9 @@ Example collection (JSON version):
   "digitalCollectionsURL": "http://digitalcollections.nypl.org/collections/954eecd0-c5bf-012f-9413-58d385a7bc34"
 }
 ```
+## Attribution
+
+NYPL's bibliographic metadata records provided via this repository are distributed under a [Creative Commons CC0 1.0 Universal Public Domain Dedication ("CCO 1.0 Dedication")](http://creativecommons.org/publicdomain/zero/1.0/). 
 
 ## Code Examples
 We've included a few example scripts and utilities to help you get started digging into the data made available in this repository.
@@ -271,6 +273,13 @@ We've included a few example scripts and utilities to help you get started diggi
 - [download_images.py](https://github.com/NYPL-publicdomain/data-and-utilities/blob/master/code_examples/utilities/download_images.py) -- A(n ugly) python script that could be used to download images of a [Digital Collections](http://digitalcollections.nypl.org) item given the UUID of any multi-capture item. Requires an [NYPL Digital Collections Metadata API](http://api.repo.nypl.org/) token. 
 
 - [API Client](https://github.com/NYPL-publicdomain/api-client) -- A Node.js module to access the [NYPL Digital Collections Metadata API](http://api.repo.nypl.org/) and return all captures for any given item, container, or collection UUID. Requires an API token.
+
+## Pull Requests and Issues
+Are you doing cool things with our public domain items? Have a script or utility you'd like to share? We welcome your pull requests for code examples that can help others access, reuse, and remix our data and images.  
+
+While we appreciate your support in cleaning up our legacy data, we are not able to accept your pull requests to our CSV and JSON datasets. We are actively working to improve our data consistency and completeness within Digital Collections, but we do rely on you to help point out factual inaccuracies. If you would like to contribute corrections to our data, please send us your feedback through our form at [Digital Collections](http://digitalcollections.nypl.org) or email to [DigitalCollections@nypl.org](mailto: DigitalCollections@nypl.org).
+
+If you have suggestions for how we can improve this data documentation, please let us know in [Issues](https://github.com/NYPL-publicdomain/data-and-utilities/issues).
 
 --- 
 
