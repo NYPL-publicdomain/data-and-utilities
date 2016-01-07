@@ -24,9 +24,9 @@ cat $NDJSON | jq -r 'select((.alternativeTitle | length) >= 1) |  {databaseID: .
 # Contributor roles
 CONTRIBUTORROLES=$TARGETDIR/contributorRoles.csv
 
-echo "databaseID,contributorName,contributorURI,contributorRole" > $CONTRIBUTORROLES
+echo "databaseID,contributorName,contributorType,contributorURI,contributorRole" > $CONTRIBUTORROLES
 
-cat $NDJSON | jq -r '{databaseID: .databaseID, contributor: .contributor[]} | {databaseID: .databaseID, contributorName: .contributor.contributorName, contributorURI: .contributorURI, contributorRole: .contributor.contributorRole[0]?} | [.databaseID, .contributorName, .contributorURI, .contributorRole] | @csv' >> $CONTRIBUTORROLES
+cat $NDJSON | jq -r '{databaseID: .databaseID, contributor: .contributor[]} | {databaseID: .databaseID, contributorName: .contributor.contributorName, contributorType: .contributor.contributorType, contributorURI: .contributor.contributorURI, contributorRole: .contributor.contributorRole[0]?} | [.databaseID, .contributorName, .contributorType, .contributorURI, .contributorRole] | @csv' >> $CONTRIBUTORROLES
 
 # Dates
 DATES=$TARGETDIR/date.csv
