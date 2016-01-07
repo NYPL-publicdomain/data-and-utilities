@@ -21,19 +21,12 @@ echo "databaseID,alternativeTitle" > $ALTTITLES
 
 cat $NDJSON | jq -r 'select((.alternativeTitle | length) >= 1) |  {databaseID: .databaseID, alternativeTitle: .alternativeTitle[]} | [.databaseID, .alternativeTitle] | @csv' >> $ALTTITLES
 
-# Contributors
-CONTRIBUTORS=$TARGETDIR/contributors.csv
-
-echo "contributorName,contributorType,contributorURI" > $CONTRIBUTORS
-
-cat $NDJSON | jq -r '.contributor[] | [.contributorName, .contributorType, .contributorURI] | @csv' | sort | uniq >> $CONTRIBUTORS
-
 # Contributor roles
 CONTRIBUTORROLES=$TARGETDIR/contributorRoles.csv
 
-echo "databaseID,contributorName,contributorRole" > $CONTRIBUTORROLES
+echo "databaseID,contributorName,contributorURI,contributorRole" > $CONTRIBUTORROLES
 
-cat $NDJSON | jq -r '{databaseID: .databaseID, contributor: .contributor[]} | {databaseID: .databaseID, contributorName: .contributor.contributorName, contributorRole: .contributor.contributorRole[]} | [.databaseID, .contributorName, .contributorRole] | @csv' >> $CONTRIBUTORROLES
+cat $NDJSON | jq -r '{databaseID: .databaseID, contributor: .contributor[]} | {databaseID: .databaseID, contributorName: .contributor.contributorName, contributorURI: .contributorURI, contributorRole: .contributor.contributorRole[0]?} | [.databaseID, .contributorName, .contributorURI, .contributorRole] | @csv' >> $CONTRIBUTORROLES
 
 # Dates
 DATES=$TARGETDIR/date.csv
