@@ -34,7 +34,9 @@ Below are the metadata fields you'll find in the CSV and JSON files that describ
 | Date end | The latest date recorded for the item. This could be the latest of multiple single dates or the end date of a date range. | Date End | dateEnd | string |
 | Language | The language of the item. An item may have zero or more languages. | Language | language | array of strings |
 | Description | A summary or description of the contents of the item, if available. | Description | description | string |
-| Note | A list of notes associated with the item. Each note in the list is prefaced by a label denoting the note type, like "General Note: " | Note | note | array of strings |
+| Note | A list of notes associated with the item. In the CSV, each note in the list is prefaced by a label denoting the note type, like "General Note: " | Note | note | array of strings (CSV) / array of objects (JSON)|
+| Note type | (JSON) The type of note. | - | note.type | string |
+| Note text | (JSON) The text of the note. | - | note.text | string |
 | Topical subject | A list of topical subjects. Most terms are taken from [LCSH](http://id.loc.gov/authorities/subjects.html) or [LCTGM](http://id.loc.gov/vocabulary/graphicMaterials.html). Complex subject headings are usually broken down into individual subjects. | Subject Topical | subjectTopical | array of strings (CSV) / array of objects (JSON) |
 | Topical subject text | (JSON) The text of the topical subject. | - | subjectTopical.text | string |
 | Topical subject URI | (JSON) A URI for the topical subject, if available. | - | subjectTopical.URI | string |
