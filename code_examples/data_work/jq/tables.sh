@@ -3,104 +3,114 @@
 # A series of jq commands that breaks out 14 different relational tables from
 # items/*.ndjson. jq can be found at: https://stedolan.github.io/jq/
 
-SOURCEDIR=../../../items/
-NDJSON=$SOURCEDIR/*.ndjson
+ITEMDIR=../../../items/
+COLLDIR=../../../collections/
+COLLJSON=$COLLDIR/*.ndjson
+ITEMJSON=$SOURCEDIR/*.ndjson
 TARGETDIR=.
 
 # Basic item info
-ITEMS=$TARGETDIR/items.csv
+ITEMS=$TARGETDIR/items/items.csv
 
 echo "databaseID,UUID,title,dateStart,dateEnd,identifierBNumber,identifierAccessionNumber,identifierCallNumber,identifierISBN,identifierISSN,identifierInterviewID,identifierPostcardID,identifierLCCN,identifierOCLCRLIN,collectionUUID,containerUUID,collectionTitle,containerTitle,parentHierarchy,numberOfCaptures,digitalCollectionsURL" > $ITEMS
 
-cat $NDJSON | jq -r '[.databaseID, .UUID, .title, .dateStart, .dateEnd, .identifierBNumber, .identifierAccessionNumber, .identifierCallNumber, .identifierISBN, .identifierISSN, .identifierInterviewID, .identifierPostcardID, .identifierLCCN, .identifierOCLCRLIN, .collectionUUID, .containerUUID, .collectionTitle, .containerTitle, .parentHierarchy, .numberOfCaptures, .digitalCollectionsURL] | @csv' >> $ITEMS
+cat $ITEMJSON | jq -r '[.databaseID, .UUID, .title, .dateStart, .dateEnd, .identifierBNumber, .identifierAccessionNumber, .identifierCallNumber, .identifierISBN, .identifierISSN, .identifierInterviewID, .identifierPostcardID, .identifierLCCN, .identifierOCLCRLIN, .collectionUUID, .containerUUID, .collectionTitle, .containerTitle, .parentHierarchy, .numberOfCaptures, .digitalCollectionsURL] | @csv' >> $ITEMS
 
 # Alternate Titles
-ALTTITLES=$TARGETDIR/alternativeTitle.csv
+ALTTITLES=$TARGETDIR/items/alternativeTitle.csv
 
 echo "databaseID,alternativeTitle" > $ALTTITLES
 
-cat $NDJSON | jq -r 'select((.alternativeTitle | length) >= 1) |  {databaseID: .databaseID, alternativeTitle: .alternativeTitle[]} | [.databaseID, .alternativeTitle] | @csv' >> $ALTTITLES
+cat $ITEMJSON | jq -r 'select((.alternativeTitle | length) >= 1) |  {databaseID: .databaseID, alternativeTitle: .alternativeTitle[]} | [.databaseID, .alternativeTitle] | @csv' >> $ALTTITLES
 
 # Contributor roles
-CONTRIBUTORROLES=$TARGETDIR/contributorRoles.csv
+CONTRIBUTORROLES=$TARGETDIR/items/contributorRoles.csv
 
 echo "databaseID,contributorName,contributorType,contributorURI,contributorRole" > $CONTRIBUTORROLES
 
-cat $NDJSON | jq -r '{databaseID: .databaseID, contributor: .contributor[]} | {databaseID: .databaseID, contributorName: .contributor.contributorName, contributorType: .contributor.contributorType, contributorURI: .contributor.contributorURI, contributorRole: .contributor.contributorRole[0]?} | [.databaseID, .contributorName, .contributorType, .contributorURI, .contributorRole] | @csv' >> $CONTRIBUTORROLES
+cat $ITEMJSON | jq -r '{databaseID: .databaseID, contributor: .contributor[]} | {databaseID: .databaseID, contributorName: .contributor.contributorName, contributorType: .contributor.contributorType, contributorURI: .contributor.contributorURI, contributorRole: .contributor.contributorRole[0]?} | [.databaseID, .contributorName, .contributorType, .contributorURI, .contributorRole] | @csv' >> $CONTRIBUTORROLES
 
 # Dates
-DATES=$TARGETDIR/date.csv
+DATES=$TARGETDIR/items/date.csv
 
 echo "databaseID,date" > $DATES
 
-cat $NDJSON | jq -r 'select((.date | length) >= 1) |  {databaseID: .databaseID, date: .date[]} | [.databaseID, .date] | @csv' >> $DATES
+cat $ITEMJSON | jq -r 'select((.date | length) >= 1) |  {databaseID: .databaseID, date: .date[]} | [.databaseID, .date] | @csv' >> $DATES
 
 # languages
-LANGUAGES=$TARGETDIR/language.csv
+LANGUAGES=$TARGETDIR/items/language.csv
 
 echo "databaseID,language" > $LANGUAGES
 
-cat $NDJSON | jq -r 'select((.language | length) >= 1) |  {databaseID: .databaseID, language: .language[]} | [.databaseID, .language] | @csv' >> $LANGUAGES
+cat $ITEMJSON | jq -r 'select((.language | length) >= 1) |  {databaseID: .databaseID, language: .language[]} | [.databaseID, .language] | @csv' >> $LANGUAGES
 
 # Notes
-NOTES=$TARGETDIR/note.csv
+NOTES=$TARGETDIR/items/note.csv
 
 echo "databaseID,noteType,noteText" > $NOTES
 
-cat $NDJSON | jq -r 'select((.note | length) >= 1) | {databaseID: .databaseID, note: .note[]} | {databaseID: .databaseID, type: .note.type, text: .note.text} | [.databaseID, .type, .text] | @csv' >> $NOTES
+cat $ITEMJSON | jq -r 'select((.note | length) >= 1) | {databaseID: .databaseID, note: .note[]} | {databaseID: .databaseID, type: .note.type, text: .note.text} | [.databaseID, .type, .text] | @csv' >> $NOTES
 
 # Topical Subjects
-TOPSUBJECTS=$TARGETDIR/topicalSubject.csv
+TOPSUBJECTS=$TARGETDIR/items/topicalSubject.csv
 
 echo "databaseID,topicalSubjectText,topicalSubjectURI" > $TOPSUBJECTS
 
-cat $NDJSON | jq -r 'select((.subjectTopical | length) >= 1) | {databaseID: .databaseID, subjectTopical: .subjectTopical[]} | {databaseID: .databaseID, text: .subjectTopical.text, uri: .subjectTopical.URI} | [.databaseID, .text, .URI] | @csv' >> $TOPSUBJECTS
+cat $ITEMJSON | jq -r 'select((.subjectTopical | length) >= 1) | {databaseID: .databaseID, subjectTopical: .subjectTopical[]} | {databaseID: .databaseID, text: .subjectTopical.text, uri: .subjectTopical.URI} | [.databaseID, .text, .URI] | @csv' >> $TOPSUBJECTS
 
 # Name Subjects
-NAMESUBJECTS=$TARGETDIR/nameSubject.csv
+NAMESUBJECTS=$TARGETDIR/items/nameSubject.csv
 
 echo "databaseID,nameSubjectText,nameSubjectURI" > $NAMESUBJECTS
 
-cat $NDJSON | jq -r 'select((.subjectName | length) >= 1) | {databaseID: .databaseID, subjectName: .subjectName[]} | {databaseID: .databaseID, text: .subjectName.text, uri: .subjectName.URI} | [.databaseID, .text, .URI] | @csv' >> $NAMESUBJECTS
+cat $ITEMJSON | jq -r 'select((.subjectName | length) >= 1) | {databaseID: .databaseID, subjectName: .subjectName[]} | {databaseID: .databaseID, text: .subjectName.text, uri: .subjectName.URI} | [.databaseID, .text, .URI] | @csv' >> $NAMESUBJECTS
 
 # Geographic Subjects
-GEOSUBJECTS=$TARGETDIR/geographicSubject.csv
+GEOSUBJECTS=$TARGETDIR/items/geographicSubject.csv
 
 echo "databaseID,geographicSubjectText,geographicSubjectURI" > $GEOSUBJECTS
 
-cat $NDJSON | jq -r 'select((.subjectGeographic | length) >= 1) | {databaseID: .databaseID, subjectGeographic: .subjectGeographic[]} | {databaseID: .databaseID, text: .subjectGeographic.text, uri: .subjectGeographic.URI} | [.databaseID, .text, .URI] | @csv' >> $GEOSUBJECTS
+cat $ITEMJSON | jq -r 'select((.subjectGeographic | length) >= 1) | {databaseID: .databaseID, subjectGeographic: .subjectGeographic[]} | {databaseID: .databaseID, text: .subjectGeographic.text, uri: .subjectGeographic.URI} | [.databaseID, .text, .URI] | @csv' >> $GEOSUBJECTS
 
 # Temporal Subjects
-TEMPSUBJECTS=$TARGETDIR/titleSubject.csv
+TEMPSUBJECTS=$TARGETDIR/items/titleSubject.csv
 
 echo "databaseID,titleSubjectText,titleSubjectURI" > $TEMPSUBJECTS
 
-cat $NDJSON | jq -r 'select((.subjectTemporal | length) >= 1) | {databaseID: .databaseID, subjectTemporal: .subjectTemporal[]} | {databaseID: .databaseID, text: .subjectTemporal.text, uri: .subjectTemporal.URI} | [.databaseID, .text, .URI] | @csv' >> $TEMPSUBJECTS
+cat $ITEMJSON | jq -r 'select((.subjectTemporal | length) >= 1) | {databaseID: .databaseID, subjectTemporal: .subjectTemporal[]} | {databaseID: .databaseID, text: .subjectTemporal.text, uri: .subjectTemporal.URI} | [.databaseID, .text, .URI] | @csv' >> $TEMPSUBJECTS
 
 # Title Subjects
-TITLESUBJECTS=$TARGETDIR/titleSubject.csv
+TITLESUBJECTS=$TARGETDIR/items/titleSubject.csv
 
 echo "databaseID,titleSubjectText,titleSubjectURI" > $TITLESUBJECTS
 
-cat $NDJSON | jq -r 'select((.subjectTitle | length) >= 1) | {databaseID: .databaseID, subjectTitle: .subjectTitle[]} | {databaseID: .databaseID, text: .subjectTitle.text, uri: .subjectTitle.URI} | [.databaseID, .text, .URI] | @csv' >> $TITLESUBJECTS
+cat $ITEMJSON | jq -r 'select((.subjectTitle | length) >= 1) | {databaseID: .databaseID, subjectTitle: .subjectTitle[]} | {databaseID: .databaseID, text: .subjectTitle.text, uri: .subjectTitle.URI} | [.databaseID, .text, .URI] | @csv' >> $TITLESUBJECTS
 
 # Resource Type
-RESOURCE=$TARGETDIR/resourceType.csv
+RESOURCE=$TARGETDIR/items/resourceType.csv
 
 echo "databaseID,resourceType" > $RESOURCE
 
-cat $NDJSON | jq -r 'select((.resourceType | length) >= 1) |  {databaseID: .databaseID, resourceType: .resourceType[]} | [.databaseID, .resourceType] | @csv' >> $RESOURCE
+cat $ITEMJSON | jq -r 'select((.resourceType | length) >= 1) |  {databaseID: .databaseID, resourceType: .resourceType[]} | [.databaseID, .resourceType] | @csv' >> $RESOURCE
 
 # Title Subjects
-GENRE=$TARGETDIR/genre.csv
+GENRE=$TARGETDIR/items/genre.csv
 
 echo "databaseID,genreText,genreURI" > $GENRE
 
-cat $NDJSON | jq -r 'select((.genre | length) >= 1) | {databaseID: .databaseID, genre: .genre[]} | {databaseID: .databaseID, text: .genre.text, uri: .genre.URI} | [.databaseID, .text, .URI] | @csv' >> $GENRE
+cat $ITEMJSON | jq -r 'select((.genre | length) >= 1) | {databaseID: .databaseID, genre: .genre[]} | {databaseID: .databaseID, text: .genre.text, uri: .genre.URI} | [.databaseID, .text, .URI] | @csv' >> $GENRE
 
 # Captures
-CAPTURE=$TARGETDIR/captures.csv
+CAPTURE=$TARGETDIR/items/captures.csv
 
 echo "databaseID,captures" > $CAPTURE
 
-cat $NDJSON | jq -r 'select((.captures | length) >= 1) |  {databaseID: .databaseID, captures: .captures[]} | [.databaseID, .captures] | @csv' >> $CAPTURE
+cat $ITEMJSON | jq -r 'select((.captures | length) >= 1) |  {databaseID: .databaseID, captures: .captures[]} | [.databaseID, .captures] | @csv' >> $CAPTURE
+
+# Collections info
+
+COLLS=$TARGETDIR/collections/collections.csv
+
+echo "databaseID,UUID,title,dateStart,dateEnd,identifierBNumber,identifierAccessionNumber,identifierCallNumber,identifierISBN,identifierISSN,identifierInterviewID,identifierPostcardID,identifierLCCN,identifierOCLCRLIN,numberOfItems,digitalCollectionsURL" > $COLLS
+
+cat $COLLJSON | jq -r '[.databaseID, .UUID, .title, .dateStart, .dateEnd, .identifierBNumber, .identifierAccessionNumber, .identifierCallNumber, .identifierISBN, .identifierISSN, .identifierInterviewID, .identifierPostcardID, .identifierLCCN, .identifierOCLCRLIN, .numberOfItems, .ddigitalCollectionsURL] | @csv' >> $COLLS
