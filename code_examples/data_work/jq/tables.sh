@@ -3,11 +3,14 @@
 # A series of jq commands that breaks out 14 different relational tables from
 # items/*.ndjson. jq can be found at: https://stedolan.github.io/jq/
 
-ITEMDIR=../../../items/
-COLLDIR=../../../collections/
+ITEMDIR=../../../items
+COLLDIR=../../../collections
+
 COLLJSON=$COLLDIR/*.ndjson
-ITEMJSON=$SOURCEDIR/*.ndjson
+ITEMJSON=$ITEMDIR/*.ndjson
 TARGETDIR=.
+
+mkdir $TARGETDIR/items $TARGETDIR/collections
 
 # Basic item info
 ITEMS=$TARGETDIR/items/items.csv
