@@ -59,35 +59,35 @@ TOPSUBJECTS=$TARGETDIR/items/topicalSubject.csv
 
 echo "databaseID,topicalSubjectText,topicalSubjectURI" > $TOPSUBJECTS
 
-cat $ITEMJSON | jq -r 'select((.subjectTopical | length) >= 1) | {databaseID: .databaseID, subjectTopical: .subjectTopical[]} | {databaseID: .databaseID, text: .subjectTopical.text, uri: .subjectTopical.URI} | [.databaseID, .text, .URI] | @csv' >> $TOPSUBJECTS
+cat $ITEMJSON | jq -r 'select((.subjectTopical | length) >= 1) | {databaseID: .databaseID, subjectTopical: .subjectTopical[]} | {databaseID: .databaseID, text: .subjectTopical.text, uri: .subjectTopical.URI} | [.databaseID, .text, .uri] | @csv' >> $TOPSUBJECTS
 
 # Name Subjects
 NAMESUBJECTS=$TARGETDIR/items/nameSubject.csv
 
 echo "databaseID,nameSubjectText,nameSubjectURI" > $NAMESUBJECTS
 
-cat $ITEMJSON | jq -r 'select((.subjectName | length) >= 1) | {databaseID: .databaseID, subjectName: .subjectName[]} | {databaseID: .databaseID, text: .subjectName.text, uri: .subjectName.URI} | [.databaseID, .text, .URI] | @csv' >> $NAMESUBJECTS
+cat $ITEMJSON | jq -r 'select((.subjectName | length) >= 1) | {databaseID: .databaseID, subjectName: .subjectName[]} | {databaseID: .databaseID, text: .subjectName.text, uri: .subjectName.URI} | [.databaseID, .text, .uri] | @csv' >> $NAMESUBJECTS
 
 # Geographic Subjects
 GEOSUBJECTS=$TARGETDIR/items/geographicSubject.csv
 
 echo "databaseID,geographicSubjectText,geographicSubjectURI" > $GEOSUBJECTS
 
-cat $ITEMJSON | jq -r 'select((.subjectGeographic | length) >= 1) | {databaseID: .databaseID, subjectGeographic: .subjectGeographic[]} | {databaseID: .databaseID, text: .subjectGeographic.text, uri: .subjectGeographic.URI} | [.databaseID, .text, .URI] | @csv' >> $GEOSUBJECTS
+cat $ITEMJSON | jq -r 'select((.subjectGeographic | length) >= 1) | {databaseID: .databaseID, subjectGeographic: .subjectGeographic[]} | {databaseID: .databaseID, text: .subjectGeographic.text, uri: .subjectGeographic.URI} | [.databaseID, .text, .uri] | @csv' >> $GEOSUBJECTS
 
 # Temporal Subjects
 TEMPSUBJECTS=$TARGETDIR/items/titleSubject.csv
 
 echo "databaseID,titleSubjectText,titleSubjectURI" > $TEMPSUBJECTS
 
-cat $ITEMJSON | jq -r 'select((.subjectTemporal | length) >= 1) | {databaseID: .databaseID, subjectTemporal: .subjectTemporal[]} | {databaseID: .databaseID, text: .subjectTemporal.text, uri: .subjectTemporal.URI} | [.databaseID, .text, .URI] | @csv' >> $TEMPSUBJECTS
+cat $ITEMJSON | jq -r 'select((.subjectTemporal | length) >= 1) | {databaseID: .databaseID, subjectTemporal: .subjectTemporal[]} | {databaseID: .databaseID, text: .subjectTemporal.text, uri: .subjectTemporal.URI} | [.databaseID, .text, .uri] | @csv' >> $TEMPSUBJECTS
 
 # Title Subjects
 TITLESUBJECTS=$TARGETDIR/items/titleSubject.csv
 
 echo "databaseID,titleSubjectText,titleSubjectURI" > $TITLESUBJECTS
 
-cat $ITEMJSON | jq -r 'select((.subjectTitle | length) >= 1) | {databaseID: .databaseID, subjectTitle: .subjectTitle[]} | {databaseID: .databaseID, text: .subjectTitle.text, uri: .subjectTitle.URI} | [.databaseID, .text, .URI] | @csv' >> $TITLESUBJECTS
+cat $ITEMJSON | jq -r 'select((.subjectTitle | length) >= 1) | {databaseID: .databaseID, subjectTitle: .subjectTitle[]} | {databaseID: .databaseID, text: .subjectTitle.text, uri: .subjectTitle.URI} | [.databaseID, .text, .uri] | @csv' >> $TITLESUBJECTS
 
 # Resource Type
 RESOURCE=$TARGETDIR/items/resourceType.csv
@@ -101,7 +101,7 @@ GENRE=$TARGETDIR/items/genre.csv
 
 echo "databaseID,genreText,genreURI" > $GENRE
 
-cat $ITEMJSON | jq -r 'select((.genre | length) >= 1) | {databaseID: .databaseID, genre: .genre[]} | {databaseID: .databaseID, text: .genre.text, uri: .genre.URI} | [.databaseID, .text, .URI] | @csv' >> $GENRE
+cat $ITEMJSON | jq -r 'select((.genre | length) >= 1) | {databaseID: .databaseID, genre: .genre[]} | {databaseID: .databaseID, text: .genre.text, uri: .genre.URI} | [.databaseID, .text, .uri] | @csv' >> $GENRE
 
 # Captures
 CAPTURE=$TARGETDIR/items/captures.csv
@@ -158,35 +158,35 @@ TOPSUBJECTS=$TARGETDIR/collections/topicalSubject.csv
 
 echo "databaseID,topicalSubjectText,topicalSubjectURI" > $TOPSUBJECTS
 
-cat $COLLJSON | jq -r 'select((.subjectTopical | length) >= 1) | {databaseID: .databaseID, subjectTopical: .subjectTopical[]} | {databaseID: .databaseID, text: .subjectTopical.text, uri: .subjectTopical.URI} | [.databaseID, .text, .URI] | @csv' >> $TOPSUBJECTS
+cat $COLLJSON | jq -r 'select((.subjectTopical | length) >= 1) | {databaseID: .databaseID, subjectTopical: .subjectTopical[]} | {databaseID: .databaseID, text: .subjectTopical.text, uri: .subjectTopical.URI} | [.databaseID, .text, .uri] | @csv' >> $TOPSUBJECTS
 
 # Name Subjects
 NAMESUBJECTS=$TARGETDIR/collections/nameSubject.csv
 
 echo "databaseID,nameSubjectText,nameSubjectURI" > $NAMESUBJECTS
 
-cat $COLLJSON | jq -r 'select((.subjectName | length) >= 1) | {databaseID: .databaseID, subjectName: .subjectName[]} | {databaseID: .databaseID, text: .subjectName.text, uri: .subjectName.URI} | [.databaseID, .text, .URI] | @csv' >> $NAMESUBJECTS
+cat $COLLJSON | jq -r 'select((.subjectName | length) >= 1) | {databaseID: .databaseID, subjectName: .subjectName[]} | {databaseID: .databaseID, text: .subjectName.text, uri: .subjectName.URI} | [.databaseID, .text, .uri] | @csv' >> $NAMESUBJECTS
 
 # Geographic Subjects
 GEOSUBJECTS=$TARGETDIR/collections/geographicSubject.csv
 
 echo "databaseID,geographicSubjectText,geographicSubjectURI" > $GEOSUBJECTS
 
-cat $COLLJSON | jq -r 'select((.subjectGeographic | length) >= 1) | {databaseID: .databaseID, subjectGeographic: .subjectGeographic[]} | {databaseID: .databaseID, text: .subjectGeographic.text, uri: .subjectGeographic.URI} | [.databaseID, .text, .URI] | @csv' >> $GEOSUBJECTS
+cat $COLLJSON | jq -r 'select((.subjectGeographic | length) >= 1) | {databaseID: .databaseID, subjectGeographic: .subjectGeographic[]} | {databaseID: .databaseID, text: .subjectGeographic.text, uri: .subjectGeographic.URI} | [.databaseID, .text, .uri] | @csv' >> $GEOSUBJECTS
 
 # Temporal Subjects
 TEMPSUBJECTS=$TARGETDIR/collections/titleSubject.csv
 
 echo "databaseID,titleSubjectText,titleSubjectURI" > $TEMPSUBJECTS
 
-cat $COLLJSON | jq -r 'select((.subjectTemporal | length) >= 1) | {databaseID: .databaseID, subjectTemporal: .subjectTemporal[]} | {databaseID: .databaseID, text: .subjectTemporal.text, uri: .subjectTemporal.URI} | [.databaseID, .text, .URI] | @csv' >> $TEMPSUBJECTS
+cat $COLLJSON | jq -r 'select((.subjectTemporal | length) >= 1) | {databaseID: .databaseID, subjectTemporal: .subjectTemporal[]} | {databaseID: .databaseID, text: .subjectTemporal.text, uri: .subjectTemporal.URI} | [.databaseID, .text, .uri] | @csv' >> $TEMPSUBJECTS
 
 # Title Subjects
 TITLESUBJECTS=$TARGETDIR/collections/titleSubject.csv
 
 echo "databaseID,titleSubjectText,titleSubjectURI" > $TITLESUBJECTS
 
-cat $COLLJSON | jq -r 'select((.subjectTitle | length) >= 1) | {databaseID: .databaseID, subjectTitle: .subjectTitle[]} | {databaseID: .databaseID, text: .subjectTitle.text, uri: .subjectTitle.URI} | [.databaseID, .text, .URI] | @csv' >> $TITLESUBJECTS
+cat $COLLJSON | jq -r 'select((.subjectTitle | length) >= 1) | {databaseID: .databaseID, subjectTitle: .subjectTitle[]} | {databaseID: .databaseID, text: .subjectTitle.text, uri: .subjectTitle.URI} | [.databaseID, .text, .uri] | @csv' >> $TITLESUBJECTS
 
 # Resource Type
 RESOURCE=$TARGETDIR/collections/resourceType.csv
@@ -200,4 +200,4 @@ GENRE=$TARGETDIR/collections/genre.csv
 
 echo "databaseID,genreText,genreURI" > $GENRE
 
-cat $COLLJSON | jq -r 'select((.genre | length) >= 1) | {databaseID: .databaseID, genre: .genre[]} | {databaseID: .databaseID, text: .genre.text, uri: .genre.URI} | [.databaseID, .text, .URI] | @csv' >> $GENRE
+cat $COLLJSON | jq -r 'select((.genre | length) >= 1) | {databaseID: .databaseID, genre: .genre[]} | {databaseID: .databaseID, text: .genre.text, uri: .genre.URI} | [.databaseID, .text, .uri] | @csv' >> $GENRE
