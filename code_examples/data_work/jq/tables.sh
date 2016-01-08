@@ -85,10 +85,10 @@ echo "databaseID,geographicSubjectText,geographicSubjectURI" > $GEOSUBJECTS
 cat $ITEMJSON | jq -r 'select((.subjectGeographic | length) >= 1) | {databaseID: .databaseID, subjectGeographic: .subjectGeographic[]} | {databaseID: .databaseID, text: .subjectGeographic.text, uri: .subjectGeographic.URI} | [.databaseID, .text, .uri] | @csv' >> $GEOSUBJECTS
 
 # Temporal Subjects
-TEMPSUBJECTS=$TARGETDIR/items/titleSubject.csv
+TEMPSUBJECTS=$TARGETDIR/items/temporalSubject.csv
 echo "writing $TEMPSUBJECTS"
 
-echo "databaseID,titleSubjectText,titleSubjectURI" > $TEMPSUBJECTS
+echo "databaseID,temporalSubjectText,temporalSubjectURI" > $TEMPSUBJECTS
 
 cat $ITEMJSON | jq -r 'select((.subjectTemporal | length) >= 1) | {databaseID: .databaseID, subjectTemporal: .subjectTemporal[]} | {databaseID: .databaseID, text: .subjectTemporal.text, uri: .subjectTemporal.URI} | [.databaseID, .text, .uri] | @csv' >> $TEMPSUBJECTS
 
@@ -169,7 +169,7 @@ cat $COLLJSON | jq -r 'select((.language | length) >= 1) |  {databaseID: .databa
 DESC=$TARGETDIR/collections/description.csv
 echo "writing $DESC"
 
-echo "databaseID,noteType,noteText" > $DESC
+echo "databaseID,description" > $DESC
 
 cat $COLLJSON | jq -r 'select((.description | length) >= 1) | {databaseID: .databaseID, description: .description[]} | [.databaseID, .description] | @csv' >> $DESC
 
@@ -206,10 +206,10 @@ echo "databaseID,geographicSubjectText,geographicSubjectURI" > $GEOSUBJECTS
 cat $COLLJSON | jq -r 'select((.subjectGeographic | length) >= 1) | {databaseID: .databaseID, subjectGeographic: .subjectGeographic[]} | {databaseID: .databaseID, text: .subjectGeographic.text, uri: .subjectGeographic.URI} | [.databaseID, .text, .uri] | @csv' >> $GEOSUBJECTS
 
 # Temporal Subjects
-TEMPSUBJECTS=$TARGETDIR/collections/titleSubject.csv
+TEMPSUBJECTS=$TARGETDIR/collections/temporalSubject.csv
 echo "writing $TEMPSUBJECTS"
 
-echo "databaseID,titleSubjectText,titleSubjectURI" > $TEMPSUBJECTS
+echo "databaseID,temporalSubjectText,temporalSubjectURI" > $TEMPSUBJECTS
 
 cat $COLLJSON | jq -r 'select((.subjectTemporal | length) >= 1) | {databaseID: .databaseID, subjectTemporal: .subjectTemporal[]} | {databaseID: .databaseID, text: .subjectTemporal.text, uri: .subjectTemporal.URI} | [.databaseID, .text, .uri] | @csv' >> $TEMPSUBJECTS
 
