@@ -165,6 +165,14 @@ echo "databaseID,language" > $LANGUAGES
 
 cat $COLLJSON | jq -r 'select((.language | length) >= 1) |  {databaseID: .databaseID, language: .language[]} | [.databaseID, .language] | @csv' >> $LANGUAGES
 
+# Description
+DESC=$TARGETDIR/collections/description.csv
+echo "writing $DESC"
+
+echo "databaseID,noteType,noteText" > $DESC
+
+cat $COLLJSON | jq -r 'select((.description | length) >= 1) | {databaseID: .databaseID, description: .description[]} | [.databaseID, .description] | @csv' >> $DESC
+
 # Notes
 NOTES=$TARGETDIR/collections/note.csv
 echo "writing $NOTES"
@@ -228,3 +236,35 @@ echo "writing $GENRE"
 echo "databaseID,genreText,genreURI" > $GENRE
 
 cat $COLLJSON | jq -r 'select((.genre | length) >= 1) | {databaseID: .databaseID, genre: .genre[]} | {databaseID: .databaseID, text: .genre.text, uri: .genre.URI} | [.databaseID, .text, .uri] | @csv' >> $GENRE
+
+# physicalDescriptionExtent
+PDE=$TARGETDIR/collections/physicalDescriptionExtent.csv
+echo "writing $PDE"
+
+echo "databaseID,physicalDescriptionExtent" > $PDE
+
+cat $COLLJSON | jq -r 'select((.physicalDescriptionExtent | length) >= 1) |  {databaseID: .databaseID, physicalDescriptionExtent: .physicalDescriptionExtent[]} | [.databaseID, .physicalDescriptionExtent] | @csv' >> $PDE
+
+# physicalDescriptionForm
+PDF=$TARGETDIR/collections/physicalDescriptionForm.csv
+echo "writing $PDF"
+
+echo "databaseID,physicalDescriptionForm" > $PDF
+
+cat $COLLJSON | jq -r 'select((.physicalDescriptionForm | length) >= 1) |  {databaseID: .databaseID, physicalDescriptionForm: .physicalDescriptionForm[]} | [.databaseID, .physicalDescriptionForm] | @csv' >> $PDF
+
+# publisher
+PUB=$TARGETDIR/collections/publisher.csv
+echo "writing $PUB"
+
+echo "databaseID,publisher" > $PUB
+
+cat $COLLJSON | jq -r 'select((.publisher | length) >= 1) |  {databaseID: .databaseID, publisher: .publisher[]} | [.databaseID, .publisher] | @csv' >> $PUB
+
+# placeOfPublication
+POP=$TARGETDIR/collections/placeOfPublication.csv
+echo "writing $POP"
+
+echo "databaseID,placeOfPublication" > $POP
+
+cat $COLLJSON | jq -r 'select((.placeOfPublication | length) >= 1) |  {databaseID: .databaseID, placeOfPublication: .placeOfPublication[]} | [.databaseID, .placeOfPublication] | @csv' >> $POP
