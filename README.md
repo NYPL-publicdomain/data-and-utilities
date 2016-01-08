@@ -274,7 +274,11 @@ We've included a few example scripts and utilities to help you get started diggi
 
 - [download_images.py](https://github.com/NYPL-publicdomain/data-and-utilities/blob/master/code_examples/utilities/download_images.py) -- A(n ugly) python script that could be used to download images of a [Digital Collections](http://digitalcollections.nypl.org) item given the UUID of any multi-capture item. Requires an [NYPL Digital Collections Metadata API](http://api.repo.nypl.org/) token. 
 
-- [API Client](https://github.com/NYPL-publicdomain/api-client) -- A Node.js module to access the [NYPL Digital Collections Metadata API](http://api.repo.nypl.org/) and return all captures for any given item, container, or collection UUID. Requires an API token.
+- [API Client](https://github.com/NYPL-publicdomain/api-client) -- A Node.js module to access the [NYPL Digital Collections Metadata API](http://api.repo.nypl.org/) and return all captures for any given item, container, or collection UUID. Requires an API token.  
+
+- [tables.sh](https://github.com/NYPL-publicdomain/data-and-utilities/blob/master/code_examples/data_work/jq/tables.sh) -- (Contributed by [mdlincoln](https://github.com/mdlincoln)) A series of jq commands that breaks out 14 different relational tables from items/*.ndjson.  
+
+- [all_items.R](https://github.com/NYPL-publicdomain/data-and-utilities/blob/master/code_examples/data_work/r/all_items.R) -- (Contributed by [mdlincoln](https://github.com/mdlincoln)) Converts the relational tables created by jq/tables.sh into a list of data.frames for analysis using R.  
 
 ## Pull Requests and Issues
 Are you doing cool things with our public domain items? Have a script or utility you'd like to share? We welcome your pull requests for code examples that can help others access, reuse, and remix our data and images.  
