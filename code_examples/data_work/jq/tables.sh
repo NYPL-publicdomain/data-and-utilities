@@ -14,6 +14,7 @@ mkdir $TARGETDIR/items $TARGETDIR/collections
 
 # Basic item info
 ITEMS=$TARGETDIR/items/items.csv
+echo "writing $ITEMS"
 
 echo "databaseID,UUID,title,dateStart,dateEnd,identifierBNumber,identifierAccessionNumber,identifierCallNumber,identifierISBN,identifierISSN,identifierInterviewID,identifierPostcardID,identifierLCCN,identifierOCLCRLIN,collectionUUID,containerUUID,collectionTitle,containerTitle,parentHierarchy,numberOfCaptures,digitalCollectionsURL" > $ITEMS
 
@@ -21,6 +22,7 @@ cat $ITEMJSON | jq -r '[.databaseID, .UUID, .title, .dateStart, .dateEnd, .ident
 
 # Alternate Titles
 ALTTITLES=$TARGETDIR/items/alternativeTitle.csv
+echo "writing $ALTTITLES"
 
 echo "databaseID,alternativeTitle" > $ALTTITLES
 
@@ -28,6 +30,7 @@ cat $ITEMJSON | jq -r 'select((.alternativeTitle | length) >= 1) |  {databaseID:
 
 # Contributor roles
 CONTRIBUTORROLES=$TARGETDIR/items/contributorRoles.csv
+echo "writing $CONTRIBUTORROLES"
 
 echo "databaseID,contributorName,contributorType,contributorURI,contributorRole" > $CONTRIBUTORROLES
 
@@ -35,6 +38,7 @@ cat $ITEMJSON | jq -r '{databaseID: .databaseID, contributor: .contributor[]} | 
 
 # Dates
 DATES=$TARGETDIR/items/date.csv
+echo "writing $DATES"
 
 echo "databaseID,date" > $DATES
 
@@ -42,6 +46,7 @@ cat $ITEMJSON | jq -r 'select((.date | length) >= 1) |  {databaseID: .databaseID
 
 # languages
 LANGUAGES=$TARGETDIR/items/language.csv
+echo "writing $LANGUAGES"
 
 echo "databaseID,language" > $LANGUAGES
 
@@ -49,6 +54,7 @@ cat $ITEMJSON | jq -r 'select((.language | length) >= 1) |  {databaseID: .databa
 
 # Notes
 NOTES=$TARGETDIR/items/note.csv
+echo "writing $NOTES"
 
 echo "databaseID,noteType,noteText" > $NOTES
 
@@ -56,6 +62,7 @@ cat $ITEMJSON | jq -r 'select((.note | length) >= 1) | {databaseID: .databaseID,
 
 # Topical Subjects
 TOPSUBJECTS=$TARGETDIR/items/topicalSubject.csv
+echo "writing $TOPSUBJECTS"
 
 echo "databaseID,topicalSubjectText,topicalSubjectURI" > $TOPSUBJECTS
 
@@ -63,6 +70,7 @@ cat $ITEMJSON | jq -r 'select((.subjectTopical | length) >= 1) | {databaseID: .d
 
 # Name Subjects
 NAMESUBJECTS=$TARGETDIR/items/nameSubject.csv
+echo "writing $NAMESUBJECTS"
 
 echo "databaseID,nameSubjectText,nameSubjectURI" > $NAMESUBJECTS
 
@@ -70,6 +78,7 @@ cat $ITEMJSON | jq -r 'select((.subjectName | length) >= 1) | {databaseID: .data
 
 # Geographic Subjects
 GEOSUBJECTS=$TARGETDIR/items/geographicSubject.csv
+echo "writing $GEOSUBJECTS"
 
 echo "databaseID,geographicSubjectText,geographicSubjectURI" > $GEOSUBJECTS
 
@@ -77,6 +86,7 @@ cat $ITEMJSON | jq -r 'select((.subjectGeographic | length) >= 1) | {databaseID:
 
 # Temporal Subjects
 TEMPSUBJECTS=$TARGETDIR/items/titleSubject.csv
+echo "writing $TEMPSUBJECTS"
 
 echo "databaseID,titleSubjectText,titleSubjectURI" > $TEMPSUBJECTS
 
@@ -84,6 +94,7 @@ cat $ITEMJSON | jq -r 'select((.subjectTemporal | length) >= 1) | {databaseID: .
 
 # Title Subjects
 TITLESUBJECTS=$TARGETDIR/items/titleSubject.csv
+echo "writing $TITLESUBJECTS"
 
 echo "databaseID,titleSubjectText,titleSubjectURI" > $TITLESUBJECTS
 
@@ -91,6 +102,7 @@ cat $ITEMJSON | jq -r 'select((.subjectTitle | length) >= 1) | {databaseID: .dat
 
 # Resource Type
 RESOURCE=$TARGETDIR/items/resourceType.csv
+echo "writing $RESOURCE"
 
 echo "databaseID,resourceType" > $RESOURCE
 
@@ -98,6 +110,7 @@ cat $ITEMJSON | jq -r 'select((.resourceType | length) >= 1) |  {databaseID: .da
 
 # Genre Subjects
 GENRE=$TARGETDIR/items/genre.csv
+echo "writing $GENRE"
 
 echo "databaseID,genreText,genreURI" > $GENRE
 
@@ -105,6 +118,7 @@ cat $ITEMJSON | jq -r 'select((.genre | length) >= 1) | {databaseID: .databaseID
 
 # Captures
 CAPTURE=$TARGETDIR/items/captures.csv
+echo "writing $CAPTURE"
 
 echo "databaseID,captures" > $CAPTURE
 
@@ -113,6 +127,7 @@ cat $ITEMJSON | jq -r 'select((.captures | length) >= 1) |  {databaseID: .databa
 # Collections info
 
 COLLS=$TARGETDIR/collections/collections.csv
+echo "writing $COLLS"
 
 echo "databaseID,UUID,title,dateStart,dateEnd,identifierBNumber,identifierAccessionNumber,identifierCallNumber,identifierISBN,identifierISSN,identifierInterviewID,identifierPostcardID,identifierLCCN,identifierOCLCRLIN,numberOfItems,digitalCollectionsURL" > $COLLS
 
@@ -120,6 +135,7 @@ cat $COLLJSON | jq -r '[.databaseID, .UUID, .title, .dateStart, .dateEnd, .ident
 
 # Alternative title
 COLLALTTITLES=$TARGETDIR/collections/alternativeTitle.csv
+echo "writing $COLLALTTITLES"
 
 echo "databaseID,alternativeTitle" > $COLLALTTITLES
 
@@ -127,6 +143,7 @@ cat $COLLJSON | jq -r 'select((.alternativeTitle | length) >= 1) |  {databaseID:
 
 # Contributor roles
 CONTRIBUTORROLES=$TARGETDIR/collections/contributorRoles.csv
+echo "writing $CONTRIBUTORROLES"
 
 echo "databaseID,contributorName,contributorType,contributorURI,contributorRole" > $CONTRIBUTORROLES
 
@@ -134,6 +151,7 @@ cat $COLLJSON | jq -r '{databaseID: .databaseID, contributor: .contributor[]} | 
 
 # Dates
 DATES=$TARGETDIR/collections/date.csv
+echo "writing $DATES"
 
 echo "databaseID,date" > $DATES
 
@@ -141,6 +159,7 @@ cat $COLLJSON | jq -r 'select((.date | length) >= 1) |  {databaseID: .databaseID
 
 # languages
 LANGUAGES=$TARGETDIR/collections/language.csv
+echo "writing $LANGUAGES"
 
 echo "databaseID,language" > $LANGUAGES
 
@@ -148,6 +167,7 @@ cat $COLLJSON | jq -r 'select((.language | length) >= 1) |  {databaseID: .databa
 
 # Notes
 NOTES=$TARGETDIR/collections/note.csv
+echo "writing $NOTES"
 
 echo "databaseID,noteType,noteText" > $NOTES
 
@@ -155,6 +175,7 @@ cat $COLLJSON | jq -r 'select((.note | length) >= 1) | {databaseID: .databaseID,
 
 # Topical Subjects
 TOPSUBJECTS=$TARGETDIR/collections/topicalSubject.csv
+echo "writing $TOPSUBJECTS"
 
 echo "databaseID,topicalSubjectText,topicalSubjectURI" > $TOPSUBJECTS
 
@@ -162,6 +183,7 @@ cat $COLLJSON | jq -r 'select((.subjectTopical | length) >= 1) | {databaseID: .d
 
 # Name Subjects
 NAMESUBJECTS=$TARGETDIR/collections/nameSubject.csv
+echo "writing $NAMESUBJECTS"
 
 echo "databaseID,nameSubjectText,nameSubjectURI" > $NAMESUBJECTS
 
@@ -169,6 +191,7 @@ cat $COLLJSON | jq -r 'select((.subjectName | length) >= 1) | {databaseID: .data
 
 # Geographic Subjects
 GEOSUBJECTS=$TARGETDIR/collections/geographicSubject.csv
+echo "writing $GEOSUBJECTS"
 
 echo "databaseID,geographicSubjectText,geographicSubjectURI" > $GEOSUBJECTS
 
@@ -176,6 +199,7 @@ cat $COLLJSON | jq -r 'select((.subjectGeographic | length) >= 1) | {databaseID:
 
 # Temporal Subjects
 TEMPSUBJECTS=$TARGETDIR/collections/titleSubject.csv
+echo "writing $TEMPSUBJECTS"
 
 echo "databaseID,titleSubjectText,titleSubjectURI" > $TEMPSUBJECTS
 
@@ -183,6 +207,7 @@ cat $COLLJSON | jq -r 'select((.subjectTemporal | length) >= 1) | {databaseID: .
 
 # Title Subjects
 TITLESUBJECTS=$TARGETDIR/collections/titleSubject.csv
+echo "writing $TITLESUBJECTS"
 
 echo "databaseID,titleSubjectText,titleSubjectURI" > $TITLESUBJECTS
 
@@ -190,6 +215,7 @@ cat $COLLJSON | jq -r 'select((.subjectTitle | length) >= 1) | {databaseID: .dat
 
 # Resource Type
 RESOURCE=$TARGETDIR/collections/resourceType.csv
+echo "writing $RESOURCE"
 
 echo "databaseID,resourceType" > $RESOURCE
 
@@ -197,6 +223,7 @@ cat $COLLJSON | jq -r 'select((.resourceType | length) >= 1) |  {databaseID: .da
 
 # Genre Subjects
 GENRE=$TARGETDIR/collections/genre.csv
+echo "writing $GENRE"
 
 echo "databaseID,genreText,genreURI" > $GENRE
 
