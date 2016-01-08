@@ -96,7 +96,7 @@ echo "databaseID,resourceType" > $RESOURCE
 
 cat $ITEMJSON | jq -r 'select((.resourceType | length) >= 1) |  {databaseID: .databaseID, resourceType: .resourceType[]} | [.databaseID, .resourceType] | @csv' >> $RESOURCE
 
-# Title Subjects
+# Genre Subjects
 GENRE=$TARGETDIR/items/genre.csv
 
 echo "databaseID,genreText,genreURI" > $GENRE
