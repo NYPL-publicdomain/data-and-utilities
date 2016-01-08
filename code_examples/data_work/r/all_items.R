@@ -14,7 +14,5 @@ nypl <- lapply(as.list(csvs), function(x) {
   read_csv(file = x)
 })
 
-View(nypl$contributorRoles)
-
 save(nypl, file = "nypl.rda")
 
