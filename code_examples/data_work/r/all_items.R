@@ -3,8 +3,12 @@
 
 library(readr)
 
-csvs <- list.files("../jq/", pattern = "*.csv", full.names = TRUE)
-names(csvs) <- gsub("\\.csv", "", list.files("../jq/", pattern = "*.csv", full.names = FALSE))
+item_csvs <- list.files("../jq/items", pattern = "*.csv", full.names = TRUE)
+names(item_csvs) <- paste0("item_", gsub("\\.csv", "", list.files("../jq/items", pattern = "*.csv", full.names = FALSE)))
+coll_csvs <- list.files("../jq/collections", pattern = "*.csv", full.names = TRUE)
+names(coll_csvs) <- paste0("coll_", gsub("\\.csv", "", list.files("../jq/collections", pattern = "*.csv", full.names = FALSE)))
+
+csvs <- c(item_csvs, coll_csvs)
 
 nypl <- lapply(as.list(csvs), function(x) {
   read_csv(file = x)
