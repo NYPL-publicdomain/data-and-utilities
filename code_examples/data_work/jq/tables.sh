@@ -131,7 +131,7 @@ echo "writing $COLLS"
 
 echo "databaseID,UUID,title,dateStart,dateEnd,identifierBNumber,identifierAccessionNumber,identifierCallNumber,identifierISBN,identifierISSN,identifierInterviewID,identifierPostcardID,identifierLCCN,identifierOCLCRLIN,numberOfItems,digitalCollectionsURL" > $COLLS
 
-cat $COLLJSON | jq -r '[.databaseID, .UUID, .title, .dateStart, .dateEnd, .identifierBNumber, .identifierAccessionNumber, .identifierCallNumber, .identifierISBN, .identifierISSN, .identifierInterviewID, .identifierPostcardID, .identifierLCCN, .identifierOCLCRLIN, .numberOfItems, .ddigitalCollectionsURL] | @csv' >> $COLLS
+cat $COLLJSON | jq -r '[.databaseID, .UUID, .title, .dateStart, .dateEnd, .identifierBNumber, .identifierAccessionNumber, .identifierCallNumber, .identifierISBN, .identifierISSN, .identifierInterviewID, .identifierPostcardID, .identifierLCCN, .identifierOCLCRLIN, .numberOfItems, .digitalCollectionsURL] | @csv' >> $COLLS
 
 # Alternative title
 COLLALTTITLES=$TARGETDIR/collections/alternativeTitle.csv
