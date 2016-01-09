@@ -276,7 +276,7 @@ We've included a few example scripts and utilities to help you get started diggi
 
 - [API Client](https://github.com/NYPL-publicdomain/api-client) -- A Node.js module to access the [NYPL Digital Collections Metadata API](http://api.repo.nypl.org/) and return all captures for any given item, container, or collection UUID. Requires an API token.  
 
-- [tables.sh](https://github.com/NYPL-publicdomain/data-and-utilities/blob/master/code_examples/data_work/jq/tables.sh) -- (Contributed by [mdlincoln](https://github.com/mdlincoln)) A series of jq commands that breaks out 14 different relational tables from items/*.ndjson.  
+- [tables.sh](https://github.com/NYPL-publicdomain/data-and-utilities/blob/master/code_examples/data_work/jq/tables.sh) -- (Contributed by [mdlincoln](https://github.com/mdlincoln)) A series of [jq](https://stedolan.github.io/jq/) commands that breaks out 32 different relational tables from items/\*.ndjson and collections/\*.ndjson.
 
 - [all_items.R](https://github.com/NYPL-publicdomain/data-and-utilities/blob/master/code_examples/data_work/r/all_items.R) -- (Contributed by [mdlincoln](https://github.com/mdlincoln)) Converts the relational tables created by jq/tables.sh into a list of data.frames for analysis using R.  
 

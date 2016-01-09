@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# A series of jq commands that breaks out 14 different relational tables from
-# items/*.ndjson. jq can be found at: https://stedolan.github.io/jq/
+# A series of jq commands that breaks out 32 different relational tables from
+# items/*.ndjson and collections/*.ndjson. jq can be found at:
+# https://stedolan.github.io/jq/
 
 ITEMDIR=../../../items
 COLLDIR=../../../collections
