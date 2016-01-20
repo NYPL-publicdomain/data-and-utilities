@@ -261,9 +261,9 @@ Example collection (JSON version):
   "digitalCollectionsURL": "http://digitalcollections.nypl.org/collections/954eecd0-c5bf-012f-9413-58d385a7bc34"
 }
 ```
-## Attribution
+## Attribution and License
 
-NYPL's bibliographic metadata records provided via this repository are distributed under a [Creative Commons CC0 1.0 Universal Public Domain Dedication ("CCO 1.0 Dedication")](http://creativecommons.org/publicdomain/zero/1.0/). 
+NYPL's bibliographic metadata records and code provided via this repository are distributed under a [Creative Commons CC0 1.0 Universal Public Domain Dedication ("CCO 1.0 Dedication")](http://creativecommons.org/publicdomain/zero/1.0/). See [license](/LICENSE).
 
 ## Code Examples
 We've included a few example scripts and utilities to help you get started digging into the data made available in this repository.
